@@ -1,0 +1,26 @@
+<script type="text/javascript">
+    RED.nodes.registerType('Apdu2Pcsc',{
+        category: 'input',
+        color: '#a6bbcf',
+        defaults: {
+            name: {value:""}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "file.png",
+        label: function() {
+            return this.name||"Apdu2Pcsc";
+        }
+    });
+</script>
+
+<script type="text/x-red" data-template-name="Apdu2Pcsc">
+    <div class="form-row">
+        <label for="node-input-name"><i class="icon-tag"></i> Name</label>
+        <input type="text" id="node-input-name" placeholder="Apdu2Pcsc">
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="Apdu2Pcsc">
+    <p>A simple node that provides access to pcsc smartcard readers</p>
+</script>
