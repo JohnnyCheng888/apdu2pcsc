@@ -1,0 +1,80 @@
+sudo apt update
+sudo apt full-upgrade
+
+*********************************************************************************
++ setup newest node.js															+
++ http://thisdavej.com/beginners-guide-to-installing-node-js-on-a-raspberry-pi/ +
+*********************************************************************************
+sudo curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+sudo apt install nodejs
+
+*********************************************************************************
++ Reinstall node-red															+
++ http://nodered.org/docs/hardware/raspberrypi									+
+*********************************************************************************
+sudo npm i -g npm@2.x
+hash -r
+sudo npm cache clean
+sudo npm install -g --unsafe-perm node-red
+cd ~/.node-red
+npm outdated
+
+
+*********************************************************************************
++ install pcsclite                  											+
++ http://pcsclite.alioth.debian.org/pcsclite.html                               +
+*********************************************************************************
+sudo apt-get install libtool
+sudo apt-get install libusb-1.0-0-dev
+sudo apt-get install flex
+sudo apt-get install automake
+cd /usr/src
+sudo apt-get install libudev-dev
+sudo git clone git://anonscm.debian.org/pcsclite/PCSC.git
+cd PCSC
+sudo ./bootstrap
+sudo ./configure
+sudo makesto
+sudo make install
+
+*********************************************************************************
++ add ccid                      												+
++ https://pcsclite.alioth.debian.org/ccid.html                                  +
+*********************************************************************************
+cd /usr/src
+sudo git clone --recursive git://anonscm.debian.org/pcsclite/CCID.git
+cd CCID
+sudo ./bootstrap
+sudo ./configure
+sudo make
+sudo make install
+sudo cp src/92_pcscd_ccid.rules /etc/udev/rules.d
+
+*********************************************************************************
++ install pcsclite nodejs wrapper												+
++ https://www.npmjs.com/package/@pokusew/pcsclite                               +
+*********************************************************************************
+sudo apt-get install libpcsclite1 libpcsclite-dev
+cd ~\.node-red
+sudo npm install buffertools
+sudo npm install pcsclite
+
+
+*********************************************************************************
++ test the installation                      												+
+*********************************************************************************
+sudo killall pcscd -9
+sudo LIBCCID_ifdLogLevel=0x000F pcscd --foreground --debug --apdu --color
+
+*********************************************************************************
++ restore "node-red-start" and "node-red-stop" bash command                     +
+*********************************************************************************
+sudo wget https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/nodered.service -O /lib/systemd/system/nodered.service
+sudo wget https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/node-red-start -O /usr/bin/node-red-start
+sudo wget https://raw.githubusercontent.com/node-red/raspbian-deb-package/master/resources/node-red-stop -O /usr/bin/node-red-stop
+sudo chmod +x /usr/bin/node-red-st*
+sudo systemctl daemon-reload
+
+
+
+
