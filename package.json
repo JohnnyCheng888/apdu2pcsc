@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-apdu2pcsc",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A simple node for node-red to send apdu to rfid and smartcards",
   "repository": {
     "type": "git",
