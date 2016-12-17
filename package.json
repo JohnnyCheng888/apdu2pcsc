@@ -1,20 +1,36 @@
 {
-    "name"         : "node-red-contrib-apdu2pcsc",
-    "version"      : "1.0.0",
-    "description"  : "A simple node for node-red to send apdu to rfid and smartcards",
-	"repository": {
-        "type": "git",
-        "url": "git@github.com/JohnnyCheng888/apdu2pcsc"
-	},
-	"license" : "MIT License",
-    "dependencies": {
-		"node-pcsclite": "^0.4.11",
-    },
-    "keywords": [ "pcsc", "pcsclite", "smartcards", "ccid" ],
-    "node-red"     : {
-        "nodes": {
-            "apdu2pcsc": "apdu2pcsc/apdu2pcsc.js"
-        }
+  "name": "node-red-contrib-apdu2pcsc",
+  "version": "1.0.3",
+  "description": "A simple node for node-red to send apdu to rfid and smartcards",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JohnnyCheng888/apdu2pcsc.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "pcsclite": "^0.4.11"
+  },
+  "keywords": [
+    "pcsc",
+    "pcsclite",
+    "smartcards",
+    "ccid"
+  ],
+  "node-red": {
+    "nodes": {
+      "apdu2pcsc": "apdu2pcsc/apdu2pcsc.js"
     }
-	"repository": "https://github.com/JohnnyCheng888/apdu2pcsc",
+  },
+  "bugs": {
+    "url": "https://github.com/JohnnyCheng888/apdu2pcsc/issues"
+  },
+  "homepage": "https://github.com/JohnnyCheng888/apdu2pcsc#readme",
+  "main": "apdu2pcsc.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Johnny Cheng",
+  "directories": {
+    "apdu2pcsc": "apdu2pcsc"
+	}
 }
