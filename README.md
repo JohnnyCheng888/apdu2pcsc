@@ -92,7 +92,7 @@ I've done the following steps. Not all might be nessasary.
 
 Finaly the apdu2pcsc node-red node to send and receive apdus can be installed
 ```bash
-cd ~\node-red
+cd ~\.node-red
 sudo npm install node-red-contrib-apdu2pcsc
 ```
 
